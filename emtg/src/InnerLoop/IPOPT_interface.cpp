@@ -52,14 +52,22 @@ namespace EMTG
 				ipopt->Options()->SetStringValue("linear_solver", "mumps");
 			ipopt->Options()->SetNumericValue("max_wall_time", this->myOptions.get_max_run_time_seconds());
 			ipopt->Options()->SetIntegerValue("max_iter", this->myOptions.get_major_iterations_limit());
+			
+			
+			if (myProblem->options.quiet_NLP)
+				ipopt->Options()->SetIntegerValue("print_level",0);
+			else
+				ipopt->Options()->SetIntegerValue("print_level",5);
+			
 			ipopt->Initialize();
 			
             //set first feasibility flag
             this->first_feasibility = false;
+			this->need_reinitialization = false;
 		}
 
         void IPOPT_interface::run_NLP(const bool& X0_is_scaled)
-        {
+        {	
             //compute the scaled decision vector
             if (!X0_is_scaled)
                 this->scaleX0();
@@ -84,7 +92,17 @@ namespace EMTG
             this->J_NLP_incumbent = math::LARGE;
             this->movie_frame_count = 0;
 
-			ipopt->OptimizeTNLP(this);
+			if (this->need_reinitialization)
+			{
+				ipopt->Options()->SetStringValue("warm_start_same_structure","yes");
+				ipopt->ReOptimizeTNLP(this);
+			}
+			else
+			{
+				ipopt->OptimizeTNLP(this);
+				this->need_reinitialization = true;
+			}
+			
 			
             //unscale the various things that might need to be uncaled
             this->unscaleX();

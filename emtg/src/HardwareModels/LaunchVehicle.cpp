@@ -22,6 +22,7 @@
 #include "LaunchVehicle.h"
 
 #include <iostream>
+#include <cmath>
 
 namespace EMTG
 {

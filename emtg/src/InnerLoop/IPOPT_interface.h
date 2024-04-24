@@ -59,6 +59,8 @@ namespace EMTG
 		    void finalize_solution(Ipopt::SolverReturn status, Ipopt::Index n, const Ipopt::Number* x, const Ipopt::Number* z_L, const Ipopt::Number* z_U, Ipopt::Index m, const Ipopt::Number* g, const Ipopt::Number* lambda, Ipopt::Number obj_value, const Ipopt::IpoptData* ip_data, Ipopt::IpoptCalculatedQuantities* ip_cq);
 
 			Ipopt::IpoptApplication* ipopt;
+			
+			bool need_reinitialization;
         };//end class IPOPT_interface
 
         

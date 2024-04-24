@@ -1,4 +1,15 @@
 ~~~~~~~~~~~~~
+April 2024 - Version 9.05
+~~~~~~~~~~~~~
+
+Originator: Jeremy Knittel, jeremy.knittel@lasp.colorado.edu
+Alterations:
+1. Bug fix. IPOPT NLP object cannot be reused without reinitializing. Single 
+calls to IPOPT would work, but segfaults would occur when MBH tried calling 
+IPOPT for the second time
+2. Bug fix. New LV model needs cmath header
+
+~~~~~~~~~~~~~
 October 2023 - Version 9.04
 ~~~~~~~~~~~~~
 

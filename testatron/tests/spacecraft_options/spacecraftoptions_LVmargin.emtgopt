@@ -1,0 +1,160 @@
+#EMTGv9 .emtgopt file version 2
+
+#mission name
+mission_name spacecraftoptions_LVmargin
+#launch window open date (MJD)
+launch_window_open_date 53701
+#flight time bounds (days)
+total_flight_time_bounds 0 300
+#phase type
+#0: MGALTS
+#1: FBLTS
+#2: MGALT
+#3: FBLT
+#4: PSBI
+#5: PSFB
+#6: MGAnDSMs
+#7: CoastPhase
+#8: SundmanCoastPhase
+#9: variable phase type
+#10: ProbeEntryPhase
+#11: ControlLawThrustPhase
+mission_type 6
+#Quiet NLP solver?
+quiet_NLP 0
+#maximum number of trials for MBH
+MBH_max_trials 100000
+#optimality tolerance
+snopt_optimality_tolerance 0.0020000000000000000416
+#NLP max run time (seconds)
+snopt_max_run_time 59
+#Universe folder
+universe_folder C:/emtg/testatron/universe/
+#Beginning of the SplineEphem data set
+earliestPossibleEpoch 51513
+#End of the SplineEphem data set
+latestPossibleEpoch 88008.041666666511446
+#maximum possible mass of the spacecraft (kg)
+maximum_mass 5000
+#LV margin (as a fraction)
+LV_margin 0.5
+#Constrain chemical propellant?
+enable_chemical_propellant_tank_constraint 1
+#Chemical fuel tank capacity (kg)
+maximum_chemical_fuel 5000
+#HardwarePath
+HardwarePath C:/emtg/testatron/HardwareModels/
+#LaunchVehicleLibraryFile
+LaunchVehicleLibraryFile NLSII_April2017.emtg_launchvehicleopt
+#LaunchVehicleKey
+LaunchVehicleKey Atlas_V_411
+#Override the working directory?
+override_working_directory 1
+#User-defined working directory
+forced_working_directory C:/emtg/testatron/tests/spacecraft_options
+#Create a mission subfolder?
+override_mission_subfolder 1
+#Mission subfolder
+forced_mission_subfolder .
+#Close program after completion?
+background_mode 1
+#Stop after a particular journey? (if this value is greater than the number of journeys, do the whole mission)
+stop_after_journey 0
+#which inner loop solver to run?
+#0: none, evaluate trialX
+#1: run MBH
+#2: run constrained DE
+#3: run NLP using trialX as initial guess
+#4: filament walker
+run_inner_loop 0
+#Field for taking notes
+user_data 
+
+
+BEGIN_JOURNEY
+#Journey name
+journey_name EM_journey
+#destination list, as indices from the Universe file
+destination_list 3 1
+#flyby sequence, as indices from the Universe file
+sequence
+#phase type
+#0: MGALTS
+#1: FBLTS
+#2: MGALT
+#3: FBLT
+#4: PSBI
+#5: PSFB
+#6: MGAnDSMs
+#7: CoastPhase
+#8: SundmanCoastPhase
+#9: variable (do not use)
+#10 ProbeEntryPhase
+#11 ControlLawThrustPhase
+phase_type 6
+#PeriapseDeparture altitude bounds (in km)
+PeriapseDeparture_altitude_bounds 300 300
+#what are the bounds on the initial impulse for each journey in km/s\
+#you can set a very high upper bound if you are using a launchy vehicle model - the optimizer will find the correct value
+initial_impulse_bounds 0 7
+#journey departure ellipsoid axes (3)
+departure_ellipsoid_axes 10000000 10000000 10000000
+#journey arrival type
+#0: insertion into parking orbit (use chemical Isp)
+#1: rendezvous (use chemical Isp)
+#2: intercept with bounded V_infinity
+#3: low-thrust rendezvous (does not work if terminal phase is not low-thrust)
+#4: match final v-infinity vector
+#5: match final v-infinity vector (low-thrust)
+#6: capture spiral
+#7: momentum transfer (kinetic impactor)
+arrival_type 2
+#Bounds on this journey's final velocity (in km/s)
+final_velocity 0 10 0
+#journey arrival ellipsoid axes (3)
+arrival_ellipsoid_axes 10000000 10000000 10000000
+#Which bodies are used for third-body perturbation?
+#Expressed as indices in the Universe file
+perturbation_bodies
+#ECC for ephemeris pegged orbit insertion
+ephemeris_pegged_orbit_insertion_ECC 1.0000000000000000364e-10
+#STK .grv style gravity model file
+central_body_gravity_file C:/emtg/testatron/universe/gravity_files/DoesNotExist.grv
+
+#Maneuver constraint code
+#Works for absolute and relative epochs and also magnitudes
+BEGIN_MANEUVER_CONSTRAINT_BLOCK
+END_MANEUVER_CONSTRAINT_BLOCK
+
+
+#Boundary constraint code
+BEGIN_BOUNDARY_CONSTRAINT_BLOCK
+END_BOUNDARY_CONSTRAINT_BLOCK
+
+
+#Phase distance constraint code
+BEGIN_PHASE_DISTANCE_CONSTRAINT_BLOCK
+END_PHASE_DISTANCE_CONSTRAINT_BLOCK
+
+#trial decision vector
+BEGIN_TRIALX
+p0MGAnDSMsEphemerisPeggedLaunchDirectInsertion: event left state epoch ,53940.858356627657486
+p0MGAnDSMsEphemerisPeggedLaunchDirectInsertion: magnitude of outgoing velocity asymptote ,6.649113293497279642
+p0MGAnDSMsEphemerisPeggedLaunchDirectInsertion: RA of departure asymptote ,-2.7254247726218707726
+p0MGAnDSMsEphemerisPeggedLaunchDirectInsertion: DEC of departure asymptote ,-0.2959479798691819763
+p0MGAnDSMs: phase flight time ,299.99999999999994316
+p0MGAnDSMsEphemerisPeggedIntercept: event left state mass ,158.63233318569717767
+p0MGAnDSMsEphemerisPeggedIntercept: V_infinity_x ,-8.1416864278065546046
+p0MGAnDSMsEphemerisPeggedIntercept: V_infinity_y ,-4.3498338558282858557
+p0MGAnDSMsEphemerisPeggedIntercept: V_infinity_z ,3.8460285341608493326
+p0MGAnDSMs: virtual chemical fuel ,248.24477039409032386
+p0MGAnDSMs: virtual chemical oxidizer ,229.62641261457159203
+p0MGAnDSMsForwardSubPhase0: burn index ,0.55501445099422852536
+p0MGAnDSMsForwardSubPhase0: DSM x component ,-3.123244895236591212
+p0MGAnDSMsForwardSubPhase0: DSM y component ,2.4685593169184212314
+p0MGAnDSMsForwardSubPhase0: DSM z component ,-1.7782535789788092018
+p0MGAnDSMsBackwardSubPhase0: burn index ,0.44498554900587139471
+END_TRIALX
+
+END_JOURNEY
+

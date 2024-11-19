@@ -1,5 +1,61 @@
 ~~~~~~~~~~~~~
-April 2024 - Version 9.05
+November 2024 - Version 9.02.01
+~~~~~~~~~~~~~
+
+Originator: Jeremy Knittel, jeremy.knittel@lasp.colorado.edu
+Alterations:
+1. Updating versioning #.##.XX. #.## will be consistent with GSFC and main EMTG
+fork numbering. XX will be appended for LASP versioning
+2. Merging LASP version 9.01.04 with GSFC version 9.02
+3. Updating Colorado copyright to 2024
+4. Journey level ability to freeze maneuver directions for specified maneuvers 
+rather than freezing entire journeys. 
+5. Changing default to "print_this_journey_options_no_matter_what" to true in C++
+and writeAll = True. 
+6. Changing propellant margin mission option. It can be greater than 1. 
+7. Fixing bug with PEATSAbox so that paths leading to PEATSA folder can include 'results'
+8. New PEATSA Missed Thrust option to stop after journey. Converts periapse or small body
+rendezvous to scripted constraints and deletes all subsequent journeys
+9. Updates (fixes?) to Missed Thrust propulsion calculations
+10. Fix to default plot generator for Missed Thrust
+11. Bug fix (options object was wrong variable name) in impatiently_run_post_process_now.py
+12. Regenerated sphinx documentation
+13. Many warning fixes
+	13a. Many overrides missing 
+	13b. Missing pragma once in IncomingAsymptoteStateRepresentation.cpp
+14. XFfile generation now adds lower bound margin, upper bound margin, and 
+sortable violation/nonviolation column	
+15. Removing carriage returns in:
+	EphemerisPeggedLTRendezvous.cpp
+	EphemerisPeggedArrival.cpp 	
+	FreePointLTRendezvous.cpp
+	EphemerisPeggedDeparture.cpp
+	EphemerisPeggedFreeDirectDeparture.cpp
+	EphemerisPeggedPoweredFlyby.cpp
+	EphemerisPeggedZeroTurnFlyby.cpp
+	FreePointDeparture.cpp
+	PeriapseDeparture.cpp
+	PeriapseLaunch.cpp
+	SundmanCoastPhase/SundmanCoastPhase.h
+	Backward_MGAnDSMs_subphase.cpp
+16. Fixes to FSFB and FBLT ephemeris generation with short phases (< 1 day)
+17. Bug Fix to enums in ParallelShootingStepDistanceConstraint.cpp
+18. Improvements to propulator
+	18a. Can generate spk file. To do this requires adding a flag to propagators
+	     to allow storing state history along with time history. Renamed
+		 "propagation_history" to "propagation_time_history" to make that clear
+    18b. Using Gregorian time input/output to avoid so much precision loss
+	18c. Only bootstraps journeys that are called for in propulator input
+	     saves SIGNIFICANT time on big input emtgopt files
+    18d. Moved Propulator python interface to .cpp file. Not sure how cmake
+	     made that work, but doesnt work having the boostpython interface in the
+		 Propulator.h file to create the python interface and the command line
+		 executable
+    18e. Integration step size is no longer an input to propulator. Just uses
+	     whatever the input emtgopt journey used.
+
+~~~~~~~~~~~~~
+April 2024 - Version 9.01.04
 ~~~~~~~~~~~~~
 
 Originator: Jeremy Knittel, jeremy.knittel@lasp.colorado.edu
@@ -10,7 +66,7 @@ IPOPT for the second time
 2. Bug fix. New LV model needs cmath header
 
 ~~~~~~~~~~~~~
-October 2023 - Version 9.04
+October 2023 - Version 9.01.03
 ~~~~~~~~~~~~~
 
 Originator: Jeremy Knittel, jeremy.knittel@lasp.colorado.edu
@@ -20,13 +76,13 @@ Alterations:
 mass to orbit = coeff1 * exp(coeff2 * c3)
 
 ~~~~~~~~~~~~~
-September 2023 - Version 9.03
+September 2023 - Version 9.01.02
 ~~~~~~~~~~~~~
 
 Originator: Jeremy Knittel, jeremy.knittel@lasp.colorado.edu
 Alterations:
 1. Added new time dependence to power model to match Copernicus'
-formulation. EMTG v9.02 only had:
+formulation. EMTG v9.01.01 only had:
 
 exp(-gamma * t)
 
@@ -46,7 +102,7 @@ New formulation:
 P = P0*((gamma1 + gamma2/r + gamma3/r^2)/(1+gamma4*r+gamma5*r^2)*(1/r^2)+gamma6)
 
 ~~~~~~~~~~~~~
-July 2023 - Version 9.02
+July 2023 - Version 9.01.01
 ~~~~~~~~~~~~~
 
 Originator: Jeremy Knittel, jeremy.knittel@lasp.colorado.edu

@@ -1,0 +1,301 @@
+#EMTGv9 .emtgopt file version 2
+
+#mission name
+mission_name ShuttlePark_to_Molniya
+#objective function type
+#0: minimum deltaV
+#1: minimum time
+#2: maximum final mass
+#3: maximize initial mass
+#4: depart as late as possible in the window
+#5: depart as early as possible in the window
+#6: maximize orbit energy
+#7: minimize launch mass
+#8: arrive as early as possible
+#9: arrive as late as possible
+#10: <PLACEHOLDER FOR FUTURE OBJECTIVE FUNCTIONS>
+#11: maximum dry/wet ratio
+#12: maximum arrival kinetic energy
+#13: minimum BOL power
+#14: maximize log_10(final mass)
+#15: maximum log_e(final mass)
+#16: maximum dry mass margin
+#17: maximum dry mass
+#18: maximum log_10(dry mass)
+#19: maximum log_e(dry mass)
+#20: minimize chemical fuel
+#21: minimize chemical oxidizer
+#22: minimize electric propellant
+#23: minimize total propellant
+#24: minimize waypoint tracking error
+#25: minimize initial impulse magnitude
+#26: maximize distance from central body
+objective_type 0
+#Include the initial impulse in calculating the delta-v objective function?
+include_initial_impulse_in_cost 1
+#launch window open date (MJD)
+launch_window_open_date 58438
+#flight time bounds (days)
+total_flight_time_bounds 0 2
+#phase type
+#0: MGALTS
+#1: FBLTS
+#2: MGALT
+#3: FBLT
+#4: PSBI
+#5: PSFB
+#6: MGAnDSMs
+#7: CoastPhase
+#8: SundmanCoastPhase
+#9: variable phase type
+#10: ProbeEntryPhase
+#11: ControlLawThrustPhase
+mission_type 6
+#Quiet NLP solver?
+quiet_NLP 0
+#Enable ACE feasible point finder?
+ACE_feasible_point_finder 1
+#quantity Max_not_improve for MBH
+MBH_max_not_improve 100000
+#maximum number of trials for MBH
+MBH_max_trials 100000
+#maximum run time for MBH, in seconds
+MBH_max_run_time 600
+#optimality tolerance
+snopt_optimality_tolerance 0.00010000000000000000479
+#NLP max run time (seconds)
+snopt_max_run_time 5
+#Enable NLP chaperone?
+enable_NLP_chaperone 0
+#Seed MBH?
+seed_MBH 1
+#MBH RNG seed (negative number means system clock)
+MBH_RNG_seed 0
+#Universe folder
+universe_folder C:/emtg/testatron/universe/
+#Integrator type
+#0: rk7813M adaptive step
+#1: rk8 fixed step
+integratorType 0
+#integration step size (maximum for adaptive, fixed for fixed)
+integration_time_step_size 864000
+#number of spiral segments
+spiral_segments 10
+#maximum possible mass of the spacecraft (kg)
+maximum_mass 23077
+#specific impulse of the engine used for impulsive maneuvers
+IspChem 450
+#low-thrust engine type
+#0: fixed thrust/Isp
+#1: constant Isp, efficiency, EMTG computes input power
+#2: choice of power model, constant efficiency, EMTG chooses Isp
+#3: choice of power model, constant efficiency and Isp
+#4: continuously-varying specific impulse
+#5: custom thrust and mass flow rate polynomial
+#6: NSTAR
+#7: XIPS-25
+#8: BPT-4000 High-Isp
+#9: BPT-4000 High-Thrust
+#10: BPT-4000 Ex-High-Isp
+#11: NEXT high-Isp v9
+#12: VASIMR (argon, using analytical model)
+#13: Hall Thruster (Xenon, using analytical model)
+#14: NEXT high-ISP v10
+#15: NEXT high-thrust v10
+#16: BPT-4000 MALTO
+#17: NEXIS Cardiff 8-15-201
+#18: H6MS Cardiff 8-15-2013
+#19: BHT20K Cardiff 8-16-2013
+#20: Aerojet HiVHAC EM
+#21: 13 kW STMD Hall high-Isp (not available in open-source)
+#22: 13 kW STMD Hall high-thrust (not available in open-source)
+#23: NEXT TT11 High-Thrust
+#24: NEXT TT11 High-Isp
+#25: NEXT TT11 Expanded Throttle Table
+#26: 13 kW STMD Hall high-Isp 10-1-2014 (not available in open-source)
+#27: 13 kW STMD Hall medium-thrust 10-1-2014 (not available in open-source)
+#28: 13 kW STMD Hall high-thrust 10-1-2014 (not available in open-source)
+#29: 2D Throttle table
+#30: 1D Throttle table high-thrust
+#31: 1D Throttle table high-Isp
+#32: 2D polynomial fit
+engine_type 0
+#thrust polynomial coefficients
+engine_input_thrust_coefficients 0 0 0 0 0 0 0
+#mass flow rate polynomial coefficients
+engine_input_mass_flow_rate_coefficients 0 0 0 0 0 0 0
+#thruster input power bounds (kW)
+engine_input_power_bounds 1 5
+#HardwarePath
+HardwarePath C:/emtg/testatron/HardwareModels/
+#LaunchVehicleKey
+LaunchVehicleKey Fixed_Initial_Mass
+#spacecraft area (for SRP, in m^2)
+spacecraft_area 1
+#Path to covariance file
+covariance_file_path ./banana.ephemeris
+#Override the working directory?
+override_working_directory 1
+#User-defined working directory
+forced_working_directory C:/emtg/testatron/tests/script_constraint_tests
+#Create a mission subfolder?
+override_mission_subfolder 1
+#Mission subfolder
+forced_mission_subfolder .
+#Close program after completion?
+background_mode 1
+#which inner loop solver to run?
+#0: none, evaluate trialX
+#1: run MBH
+#2: run constrained DE
+#3: run NLP using trialX as initial guess
+#4: filament walker
+run_inner_loop 0
+#Field for taking notes
+user_data 
+
+
+BEGIN_JOURNEY
+#Journey name
+journey_name TransferToMolniya
+#Journey central body name
+journey_central_body Earth
+#destination list, as indices from the Universe file
+destination_list 0 0
+#flyby sequence, as indices from the Universe file
+sequence
+#impulses per phase
+impulses_per_phase 3
+#Journey duty cycle
+duty_cycle 0
+#propagator type
+propagatorType 0
+#integration step size (s)
+integration_step_size 1
+#Lower and upper bound on journey flyby altitude, if override is active (only applies to the departure flyby, if there is one)
+flyby_altitude_bounds 1000 10000
+#Lower and upper bound on journey periapse arrival altitude, if override is active (km)
+PeriapseArrival_altitude_bounds 300 100000
+#PeriapseDeparture altitude bounds (in km)
+PeriapseDeparture_altitude_bounds 300 300
+#Journey wait time bounds (days)
+wait_time_bounds 0 0.10000000000000000555
+#Journey arrival date bounds (MJD, two entries)
+arrival_date_bounds 53982 60000
+#what are the bounds on the initial impulse for each journey in km/s\
+#you can set a very high upper bound if you are using a launchy vehicle model - the optimizer will find the correct value
+initial_impulse_bounds 1.0000000000000000209e-08 2
+#cartesian state or SMA, ECC, INC, RAAN, AOP, TA
+departure_elements 6405.5011152416373079 1.3255440101173071223e-13 -7.7433719158914726677e-16 1.3195100428151169574e-16 6.4045291487331441616 4.8261588790292622164
+#Reference epoch (MJD) for journey departure elements
+departure_elements_reference_epoch 58438
+#Allow journey departure free point boundary to propagate (otherwise it is a fixed waypoint)
+AllowJourneyFreePointDepartureToPropagate 1
+#journey departure boundary class
+#0: Ephemeris-pegged (default EMTG)
+#1: Free point
+#2: Ephemeris-referenced
+#3: Periapse
+departure_class 1
+#journey departure ellipsoid axes (3)
+departure_ellipsoid_axes 1000000 1000000 1000000
+#journey arrival type
+#0: insertion into parking orbit (use chemical Isp)
+#1: rendezvous (use chemical Isp)
+#2: intercept with bounded V_infinity
+#3: low-thrust rendezvous (does not work if terminal phase is not low-thrust)
+#4: match final v-infinity vector
+#5: match final v-infinity vector (low-thrust)
+#6: capture spiral
+#7: momentum transfer (kinetic impactor)
+arrival_type 1
+#one entry for each element
+arrival_elements_vary_flag 1 1 1 1 1 1
+#bounds on elements or state components, two entries for each element
+arrival_elements_bounds -100000 100000 -100000 100000 -100000 100000 -20 20 -20 20 -20 20
+#Reference epoch (MJD) for journey arrival elements
+arrival_elements_reference_epoch 58438
+#Allow journey arrival free point boundary to propagate (otherwise it is a fixed waypoint)
+AllowJourneyFreePointArrivalToPropagate 1
+#journey arrival boundary class
+#0: Ephemeris-pegged (default EMTG)
+#1: Free point
+#2: Ephemeris-referenced
+#3: Periapse
+arrival_class 1
+#journey arrival ellipsoid axes (3)
+arrival_ellipsoid_axes 1000000 1000000 1000000
+#Which bodies are used for third-body perturbation?
+#Expressed as indices in the Universe file
+perturbation_bodies
+#ECC for ephemeris pegged orbit insertion
+ephemeris_pegged_orbit_insertion_ECC 1.0000000000000000364e-10
+#STK .grv style gravity model file
+central_body_gravity_file C:/emtg/testatron/universe/gravity_files/DoesNotExist.grv
+
+#Maneuver constraint code
+#Works for absolute and relative epochs and also magnitudes
+BEGIN_MANEUVER_CONSTRAINT_BLOCK
+END_MANEUVER_CONSTRAINT_BLOCK
+
+
+#Boundary constraint code
+BEGIN_BOUNDARY_CONSTRAINT_BLOCK
+p0_arrival_apoapsedistance_45816.476nmi_45816.477nmi
+p0_arrival_periapsedistance_7313.396000000001nmi_7313.397nmi
+p0_arrival_INC_63.4deg_63.41deg_ICRF
+p0_arrival_AOP_270deg_270.1deg_ICRF
+END_BOUNDARY_CONSTRAINT_BLOCK
+
+
+#Phase distance constraint code
+BEGIN_PHASE_DISTANCE_CONSTRAINT_BLOCK
+END_PHASE_DISTANCE_CONSTRAINT_BLOCK
+
+#trial decision vector
+BEGIN_TRIALX
+p0MGAnDSMsFreePointDirectInsertion: event left state x ,6405.5011152416373079
+p0MGAnDSMsFreePointDirectInsertion: event left state y ,2.3255440000000001931e-13
+p0MGAnDSMsFreePointDirectInsertion: event left state z ,9.922565999999999606e-14
+p0MGAnDSMsFreePointDirectInsertion: event left state vx ,1.0013195000000000077e-13
+p0MGAnDSMsFreePointDirectInsertion: event left state vy ,6.4045291487332445257
+p0MGAnDSMsFreePointDirectInsertion: event left state vz ,4.8261588790293625806
+p0MGAnDSMsFreePointDirectInsertion: event left state mass ,23077
+p0MGAnDSMsFreePointDirectInsertion: event left state epoch ,58438.03123061687802
+p0MGAnDSMsFreePointDirectInsertion: magnitude of outgoing velocity asymptote ,1.0000000000000000209e-08
+p0MGAnDSMsFreePointDirectInsertion: RA of departure asymptote ,-32.575427425874401877
+p0MGAnDSMsFreePointDirectInsertion: DEC of departure asymptote ,-1.3601797568867963761
+p0MGAnDSMsFreePointDirectInsertion: virtual chemical fuel ,0.00050640272666198783268
+p0MGAnDSMsFreePointDirectInsertion: virtual chemical oxidizer ,-0.0020303132712711107789
+p0MGAnDSMs: phase flight time ,1.2946529401808071214
+p0MGAnDSMsFreePointChemRendezvous: event left state x ,36377.181036455585854
+p0MGAnDSMsFreePointChemRendezvous: event left state y ,16169.885045709335827
+p0MGAnDSMsFreePointChemRendezvous: event left state z ,56634.163520646368852
+p0MGAnDSMsFreePointChemRendezvous: event left state vx ,-0.45739295672598956344
+p0MGAnDSMsFreePointChemRendezvous: event left state vy ,0.9844242137648357982
+p0MGAnDSMsFreePointChemRendezvous: event left state vz ,1.4952431460584989509
+p0MGAnDSMsFreePointChemRendezvous: event left state mass ,9206.5892185854663694
+p0MGAnDSMsFreePointChemRendezvous: V_infinity_x ,8.8817800000000005257e-15
+p0MGAnDSMsFreePointChemRendezvous: V_infinity_y ,-9.7699599999999999026e-15
+p0MGAnDSMsFreePointChemRendezvous: V_infinity_z ,7.5495199999999996599e-15
+p0MGAnDSMsFreePointChemRendezvous: virtual chemical fuel ,0.0049268879586719964078
+p0MGAnDSMsFreePointChemRendezvous: virtual chemical oxidizer ,-3.5232033427699999657e-09
+p0MGAnDSMs: virtual chemical fuel ,7205.4081709731717638
+p0MGAnDSMs: virtual chemical oxidizer ,6665.0025581503587091
+p0MGAnDSMsForwardSubPhase0: burn index ,0.062212789483231049903
+p0MGAnDSMsForwardSubPhase0: DSM x component ,2.609480821849137655
+p0MGAnDSMsForwardSubPhase0: DSM y component ,0.43951650707990097544
+p0MGAnDSMsForwardSubPhase0: DSM z component ,0.51080897081925158432
+p0MGAnDSMsForwardSubPhase1: burn index ,0.51168501840245017576
+p0MGAnDSMsForwardSubPhase1: DSM x component ,-0.16870095926802974873
+p0MGAnDSMsForwardSubPhase1: DSM y component ,0.27325817503642824136
+p0MGAnDSMsForwardSubPhase1: DSM z component ,-1.0934004368868013302
+p0MGAnDSMsBackwardSubPhase0: burn index ,0.14715183659335240307
+p0MGAnDSMsBackwardSubPhase1: burn index ,0.27895035552086644426
+p0MGAnDSMsBackwardSubPhase1: DSM x component ,-0.026132410526280125396
+p0MGAnDSMsBackwardSubPhase1: DSM y component ,-0.2180908923336222216
+p0MGAnDSMsBackwardSubPhase1: DSM z component ,-0.019355897270672883792
+END_TRIALX
+
+END_JOURNEY
+
